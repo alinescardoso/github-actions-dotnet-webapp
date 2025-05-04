@@ -27,6 +27,11 @@ jobs:
 
       - name: Faz o setup do .NET
         uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Faz o restore do projeto
+        run: dotnet restore **/*.csproj
 
       - name: Faz o build do projeto
         run: dotnet build **/*.csproj --no-restore
