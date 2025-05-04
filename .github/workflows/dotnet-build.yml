@@ -1,0 +1,32 @@
+# Nome do workflow
+name: build-dotnet
+
+# Eventos de trigger que inicia o workflow
+on:
+# Ativa com um push
+  push:
+    branches:
+      - main
+# Ativa de forma agendada (a cada h)
+  schedule:
+    - cron: '0 * * * *'
+# Evento manual
+  workflow_dispatch:
+
+# Posso ter um ou mais jobs dentro do workflow
+jobs:
+  # Nome do job
+  build:
+    # Runner(agente) é o ambiente onde o job vai rodar
+    runs-on: ubuntu-latest
+
+    # Steps são as etapas (actions) que o job vai executar
+    steps:
+      - name: Faz o checkout do código
+        uses: actions/setup-dotnet@v4
+
+      - name: Faz o build do projeto
+        run: dotnet build **/*.csproj --no-restore
+
+      - name: Coloca o projeto para rodar
+        run: dotnet run --project **/*.csproj
