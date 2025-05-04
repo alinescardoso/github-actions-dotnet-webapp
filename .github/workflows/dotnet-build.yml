@@ -23,6 +23,9 @@ jobs:
     # Steps são as etapas (actions) que o job vai executar
     steps:
       - name: Faz o checkout do código
+        uses: actions/checkout@v2
+
+      - name: Faz o setup do .NET
         uses: actions/setup-dotnet@v4
 
       - name: Faz o build do projeto
