@@ -23,12 +23,7 @@ jobs:
     # Steps são as etapas (actions) que o job vai executar
     steps:
       - name: Faz o checkout do código
-        uses: actions/checkout@v2
-
-      - name: Faz o setup do .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
+        uses: actions/checkout@v4
 
       - name: Faz o restore do projeto
         run: dotnet restore **/*.csproj
@@ -36,5 +31,5 @@ jobs:
       - name: Faz o build do projeto
         run: dotnet build **/*.csproj --no-restore
 
-      - name: Coloca o projeto para rodar
-        run: dotnet run --project **/*.csproj
+      - name: Mensagem de sucesso
+        run: echo "Build concluído com sucesso"
